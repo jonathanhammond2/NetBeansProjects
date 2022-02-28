@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.com.mycompany.mavenproject1">
+  <ClassDiagramComponents>
+    <Class name="Circle" package="com.mycompany.mavenproject1" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="radius" type="double" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="col"/>
+          <Argument type="double" name="rad"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="area" returnType="double" visibility="package"/>
+        <Method name="perimeter" returnType="double" visibility="package"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DataAbstractionExample" package="com.mycompany.mavenproject1" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Rectangle" package="com.mycompany.mavenproject1" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="length" type="double" visibility="package"/>
+        <Field name="width" type="double" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="col"/>
+          <Argument type="double" name="length"/>
+          <Argument type="double" name="width"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="area" returnType="double" visibility="package"/>
+        <Method name="perimeter" returnType="double" visibility="package"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Shape" package="com.mycompany.mavenproject1" visibility="public" isAbstract="true" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="color" type="String" visibility="package"/>
+        <Field name="dim" type="String" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="col"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="area" returnType="double" visibility="package" isAbstract="true"/>
+        <Method name="perimeter" returnType="double" visibility="package" isAbstract="true"/>
+        <Method name="toString" returnType="String" visibility="public" isAbstract="true"/>
+        <Method name="setColor" returnType="void" visibility="public">
+          <Argument type="String" name="color"/>
+        </Method>
+        <Method name="getColor" returnType="String" visibility="public"/>
+        <Method name="staticfunc" returnType="void" visibility="package" isStatic="true"/>
+        <Method name="func" returnType="void" visibility="package" isFinal="true"/>
+      </Methods>
+    </Class>
+    <Class name="Sphere" package="com.mycompany.mavenproject1" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="fmt" type="DecimalFormat" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="color"/>
+          <Argument type="double" name="radius"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setFmt" returnType="void" visibility="public">
+          <Argument type="DecimalFormat" name="fmt"/>
+        </Method>
+        <Method name="setRadius" returnType="void" visibility="public">
+          <Argument type="double" name="radius"/>
+        </Method>
+        <Method name="setColor" returnType="void" visibility="public">
+          <Argument type="String" name="color"/>
+        </Method>
+        <Method name="setDim" returnType="void" visibility="public">
+          <Argument type="String" name="dim"/>
+        </Method>
+        <Method name="getFmt" returnType="DecimalFormat" visibility="public"/>
+        <Method name="getRadius" returnType="double" visibility="public"/>
+        <Method name="getColor" returnType="String" visibility="public"/>
+        <Method name="getDim" returnType="String" visibility="public"/>
+        <Method name="volume" returnType="double" visibility="public"/>
+        <Method name="area" returnType="double" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Triangle" package="com.mycompany.mavenproject1" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="a" type="double" visibility="package"/>
+        <Field name="b" type="double" visibility="package"/>
+        <Field name="c" type="double" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="col"/>
+          <Argument type="double" name="a"/>
+          <Argument type="double" name="b"/>
+          <Argument type="double" name="c"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="area" returnType="double" visibility="package"/>
+        <Method name="perimeter" returnType="double" visibility="package"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="com.mycompany.mavenproject1.Circle" target="com.mycompany.mavenproject1.Shape"/>
+    <IsRelation name="is" source="com.mycompany.mavenproject1.Rectangle" target="com.mycompany.mavenproject1.Shape"/>
+    <IsRelation name="is" source="com.mycompany.mavenproject1.Sphere" target="com.mycompany.mavenproject1.Circle"/>
+    <IsRelation name="is" source="com.mycompany.mavenproject1.Triangle" target="com.mycompany.mavenproject1.Shape"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

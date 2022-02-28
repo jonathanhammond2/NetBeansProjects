@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.com.mycompany.interfacedemo">
+  <ClassDiagramComponents>
+    <Class name="InterfaceDemo" package="com.mycompany.interfacedemo" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MyDemoClass" package="com.mycompany.interfacedemo" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="my1IFMethod" returnType="void" visibility="public"/>
+        <Method name="my2IFMethod" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="MyFirstInterface" package="com.mycompany.interfacedemo" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Methods>
+        <Method name="my1IFMethod" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="MySecondInterface" package="com.mycompany.interfacedemo" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Methods>
+        <Method name="my2IFMethod" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.mycompany.interfacedemo.MyDemoClass" target="com.mycompany.interfacedemo.MySecondInterface"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.mycompany.interfacedemo.MyDemoClass" target="com.mycompany.interfacedemo.MyFirstInterface"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

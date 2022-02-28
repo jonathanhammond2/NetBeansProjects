@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="PetStoreUML">
+  <ClassDiagramComponents>
+    <Class name="Pet" package="" visibility="public" xPosition="6.0" yPosition="0.0">
+      <Fields>
+        <Field name="PetID" type="String" visibility="private"/>
+        <Field name="Name" type="String" visibility="private"/>
+        <Field name="age" type="intendedAge" visibility="private"/>
+        <Field name="breed" type="String" visibility="private"/>
+        <Field name="color" type="String" visibility="private"/>
+        <Field name="weight" type="double" visibility="private"/>
+        <Field name="immunized" type="Boolean" visibility="private"/>
+        <Field name="aquired" type="aquisition" visibility="private"/>
+        <Field name="price" type="int" visibility="private"/>
+        <Field name="care" type="careLVL" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="petID"/>
+          <Argument type="String" name="name"/>
+          <Argument type="intendedAge" name="age"/>
+          <Argument type="String" name="breed"/>
+          <Argument type="String" name="color"/>
+          <Argument type="double" name="weight"/>
+          <Argument type="Boolean" name="immunized"/>
+          <Argument type="aquisition" name="aquired"/>
+          <Argument type="int" name="price"/>
+          <Argument type="careLVL" name="care"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPetID" returnType="String" visibility="public"/>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getAge" returnType="int" visibility="public"/>
+        <Method name="getBreed" returnType="String" visibility="public"/>
+        <Method name="getColor" returnType="String" visibility="public"/>
+        <Method name="getWeight" returnType="double" visibility="public"/>
+        <Method name="getImmunized" returnType="Boolean" visibility="public"/>
+        <Method name="getAquired" returnType="aquisition" visibility="public"/>
+        <Method name="getPrice" returnType="int" visibility="public"/>
+        <Method name="getCareLVL" returnType="careLVL" visibility="public"/>
+        <Method name="setPetID" returnType="String" visibility="public">
+          <Argument type="String" name="PetID"/>
+        </Method>
+        <Method name="setName" returnType="String" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="setAge" returnType="int" visibility="public">
+          <Argument type="int" name="age"/>
+        </Method>
+        <Method name="setBreed" returnType="String" visibility="public">
+          <Argument type="String" name="breed"/>
+        </Method>
+        <Method name="setColor" returnType="String" visibility="public">
+          <Argument type="String" name="color"/>
+        </Method>
+        <Method name="setWeight" returnType="double" visibility="public">
+          <Argument type="double" name="weight"/>
+        </Method>
+        <Method name="setImmunized" returnType="Boolean" visibility="public">
+          <Argument type="Boolean" name="immunized"/>
+        </Method>
+        <Method name="setAquired" returnType="aquisition" visibility="public">
+          <Argument type="aquisition" name="aquired"/>
+        </Method>
+        <Method name="setPrice" returnType="int" visibility="public">
+          <Argument type="int" name="price"/>
+        </Method>
+        <Method name="setCareLVL" returnType="careLVL" visibility="public">
+          <Argument type="careLVL" name="care"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Enum name="aquisition" package="" visibility="public" xPosition="695.0" yPosition="304.0">
+      <Literals>
+        <Literal name="BOUGHT"/>
+        <Literal name="SURRENDERED"/>
+        <Literal name="RESCUED"/>
+        <Literal name="BRED"/>
+      </Literals>
+    </Enum>
+    <Enum name="careLVL" package="" visibility="public" xPosition="537.0" yPosition="323.0">
+      <Literals>
+        <Literal name="LOW"/>
+        <Literal name="MEDIUM"/>
+        <Literal name="HIGH"/>
+      </Literals>
+    </Enum>
+    <Class name="Customer" package="" visibility="public" xPosition="853.0" yPosition="-7.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="age" type="int" visibility="private"/>
+        <Field name="address" type="String" visibility="private"/>
+        <Field name="petID" type="String[]" visibility="private"/>
+        <Field name="customerSince" type="LocalDate" visibility="private"/>
+        <Field name="nextAppointment" type="LocalDate" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getAge" returnType="int" visibility="public"/>
+        <Method name="getAddress" returnType="String" visibility="public"/>
+        <Method name="getPetID" returnType="String[]" visibility="public"/>
+        <Method name="getCustomerSince" returnType="LocalDate" visibility="public"/>
+        <Method name="getNextAppointment" returnType="LocalDate" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Inventory" package="" visibility="public" xPosition="695.0" yPosition="0.0">
+      <Fields>
+        <Field name="price" type="int" visibility="private"/>
+        <Field name="petType" type="String" visibility="private"/>
+        <Field name="dateAdded" type="LocalDate" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Food" package="" visibility="public" xPosition="379.0" yPosition="140.0">
+      <Fields>
+        <Field name="intededAge" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Toy" package="" visibility="public" xPosition="699.0" yPosition="140.0">
+      <Fields>
+        <Field name="indoor" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="NecessityItem" package="" visibility="public" xPosition="537.0" yPosition="159.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Dog" package="" visibility="public" xPosition="225.0" yPosition="570.0">
+      <Fields>
+        <Field name="ugly" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Cat" package="" visibility="public" xPosition="695.0" yPosition="570.0">
+      <Fields>
+        <Field name="hairy" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Fish" package="" visibility="public" xPosition="383.0" yPosition="570.0">
+      <Fields>
+        <Field name="tankSize" type="double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Bird" package="" visibility="public" xPosition="537.0" yPosition="570.0">
+      <Fields>
+        <Field name="talking" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Enum name="intendedAge" package="" visibility="public" xPosition="365.0" yPosition="323.0">
+      <Literals>
+        <Literal name="YOUNG"/>
+        <Literal name="PRIME"/>
+        <Literal name="OLD"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="aquire" source="Pet" target="aquisition" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="NecessityItem" target="Inventory"/>
+    <IsRelation name="is" source="Bird" target="Pet"/>
+    <IsRelation name="is" source="Cat" target="Pet"/>
+    <IsRelation name="is" source="Toy" target="Inventory"/>
+    <IsRelation name="is" source="Fish" target="Pet"/>
+    <IsRelation name="is" source="Food" target="Inventory"/>
+    <HasRelation name="care" source="Pet" target="careLVL" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Dog" target="Pet"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
