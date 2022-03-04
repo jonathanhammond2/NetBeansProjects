@@ -76,10 +76,10 @@ public class MenuBarPane extends BorderPane{
         kfePane.setVisible(false);
 
         
-        switch (item){
-            case (item==exitItem):
-                break;
-        }
+        // switch (item){
+        //     case (item==exitItem):
+        //         break;
+        // }
         if (item==exitItem){System.exit(0);}
         if (item==kfItem){kfPane.setVisible(true);}
         if (item==kfeItem){kfePane.setVisible(true);}

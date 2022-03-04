@@ -112,6 +112,7 @@ public class TwoDimArrayHW {
         
         System.out.println();//whitespace
         System.out.println();
+//        System.out.println(getElementCount(twoDimHW));
         
         //Each of these print statements prints a various statistic and calls the
         //corresponding method. 

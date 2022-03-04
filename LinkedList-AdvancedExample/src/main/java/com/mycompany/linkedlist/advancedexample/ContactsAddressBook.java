@@ -32,7 +32,7 @@ public class ContactsAddressBook {
     
     System.out.println(CAB);
     System.out.println("\n\n SUBLIST");
-    List subList = CAB.subList(1,4);
+    List subList = CAB.subList(0,2);
     System.out.println("Sublist is:\n" + subList);
     
     subList.remove(2);
