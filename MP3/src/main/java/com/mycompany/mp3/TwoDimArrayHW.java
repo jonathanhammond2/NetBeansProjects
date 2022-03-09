@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class TwoDimArrayHW {
     //create two final integers which will determine the shape of the R
     //twoDimHW array
-    static final int NUMROWS = 3;
+    static final int NUMROWS = -1;
     static final int NUMCOLS = 5;
     
     public static void main(String[] args) {
@@ -27,7 +27,7 @@ public class TwoDimArrayHW {
        
         //an integer which keeps track of the row
         int j = 0;
-//        int k = 0;
+        int k = 0;
         for (int[] twoDimHW1 : twoDimHW) {//for each row in twoDimHW, execute the following:
             //for each of the ints within each row, execute the following:
             for (int i = 0; i<twoDimHW1.length; i++){
@@ -35,13 +35,13 @@ public class TwoDimArrayHW {
                 //if the input is an integer, that value is stored in the twoDimHW array
                 //if it's not an integer, a try-catch statement catches the
                 //InputMismatchExeption and prompts the user for another input.
-//              k++;
+              k++;
                 while(true){
                     System.out.println("Please enter an integer "
                         + "value for twoDimHW["+j+"]"+"["+i+"]: ");
                     try{
-                        twoDimHW1[i] = scan.nextInt();
-//                        twoDimHW1[i] = k;
+//                        twoDimHW1[i] = scan.nextInt();
+                        twoDimHW1[i] = k;
                         break;
                     }
                     catch (InputMismatchException e){
@@ -66,18 +66,17 @@ public class TwoDimArrayHW {
         //but it does allow for multiple operations and also makes the code
         //simpler + easier
         
-        int[][] numbersReverse = new int[NUMROWS][NUMCOLS]; //insantiate the numbersReverse array
+        int[][] numbersReverse = flipArrayHorizontally(twoDimHW); //call the flipArrayHorizontally method
+//new int[NUMROWS][NUMCOLS]; //insantiate the numbersReverse array
         System.out.println("Flipping the array Horizontally:");
-        flipArrayHorizontally(twoDimHW, numbersReverse); //call the flipArrayHorizontally method
         printArray(numbersReverse); //print the horizontally flipped array
         
         System.out.println(); //More whitespace
         System.out.println();
         
 //        int[][] flipArrVer = new int[NUMROWS][NUMCOLS]; //instantiate the flipArrVer 2d array
-        int[][] flipArrVer = new int[NUMROWS][NUMCOLS];
+        int[][] flipArrVer = flipArrayVertically(twoDimHW);//call the flipArrayVertically method
         System.out.println("Flipping the array Vertically:");
-        flipArrayVertically(twoDimHW,flipArrVer);//call the flipArrayVertically method
         printArray(flipArrVer);//print the resulting flipArrVer array
         
         System.out.println(); //Whitespace again
@@ -92,17 +91,19 @@ public class TwoDimArrayHW {
         System.out.println();
         
         //to transpose the twoDimHW array, the shape must be flipped (flip numrows&numcols)
-        int[][] transpArr = new int[NUMCOLS][NUMROWS];//instantiate the transpArr array
+//        int[][] transpArr = new int[NUMCOLS][NUMROWS];//instantiate the transpArr array
+        int[][] transpArr = transposeArray(twoDimHW);
         System.out.println("Transposing the array:");
-        transposeArray(twoDimHW, transpArr);//call the transposeArray method
+//        transposeArray(twoDimHW, transpArr);//call the transposeArray method
         printArray(transpArr);//print the resulting array
         
         System.out.println();//whitespace
         System.out.println();
         
-        int[][] reverseTranspArr = new int[NUMCOLS][NUMROWS];//instantiate the reverseTranspArr array
+//        int[][] reverseTranspArr = new int[NUMCOLS][NUMROWS];//instantiate the reverseTranspArr array
+        int[][] reverseTranspArr = reverseTransposeArray(twoDimHW);
         System.out.println("Reversing and transposing the array:");
-        reverseTransposeArray(twoDimHW, reverseTranspArr);//call the reverseTransposeArray method
+//        reverseTransposeArray(twoDimHW, reverseTranspArr);//call the reverseTransposeArray method
         printArray(reverseTranspArr);//print the resulting array
         
         System.out.println();//whitespace

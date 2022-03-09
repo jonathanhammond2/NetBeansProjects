@@ -12,19 +12,19 @@ public class ReverseArrayClassHW {
 
 //reverse the array and then transpose it, given the 2d input array and 
     //the output array to read the values to.
-    public static int[][] reverseTransposeArray(int[][]arrIn,
-            int[][]arrOut){
+    public static int[][] reverseTransposeArray(int[][]arrIn){
         //create a new temp array
-        int[][] temp = new int[arrIn.length][arrIn[0].length];
-        reverseArray(arrIn, temp); //flip the array and read to the temp array
-        transposeArray(temp, arrOut); //read from the temp array to transpose to the output array
-        return arrOut; //return the output array
+//        int[][]arrOut = new int[arrIn.length][arrIn[0].length];
+        int[][] temp = reverseArray(arrIn);
+//        temp = reverseArray(arrIn); //flip the array and read to the temp array
+        return transposeArray(temp); //read from the temp array to transpose to the output array
+//        return arrOut; //return the output array
     }
     
     //take an input array and transpose it/flip it on its side
     //this requires that the output array have the inverse shape of the input array
-    public static int[][] transposeArray(int[][]arrIn,
-            int[][]arrOut){
+    public static int[][] transposeArray(int[][]arrIn){
+        int[][]arrOut = new int[arrIn[0].length][arrIn.length];
         try{
             for (int i=0;i<arrIn.length;i++){
                 for (int j=0;j<arrIn[0].length;j++){
@@ -44,19 +44,18 @@ public class ReverseArrayClassHW {
     
     //reverse an array - this can be done by flipping the array
     //vertically and horizontally
-    public static int[][] reverseArray(int[][]arrIn,
-            int[][]arrOut){
+    public static int[][] reverseArray(int[][]arrIn){
+//        int[][]arrOut = new int[arrIn.length][arrIn[0].length];
         //flip the input array vertically & write to a temp array
-        int[][] temp = new int[arrIn.length][arrIn[0].length];
-        flipArrayVertically(arrIn, temp);
+        int[][] temp = flipArrayVertically(arrIn);
         //flip the temp array horizontally and write to the output array
-        flipArrayHorizontally(temp, arrOut);
-        return arrOut;//return the output array
+        return flipArrayHorizontally(temp);
+//        return arrOut;//return the output array
     }
     
     //flip the arry vertically - flip the row indicies
-    public static int[][] flipArrayVertically(int[][]arrIn,
-            int[][]arrOut){
+    public static int[][] flipArrayVertically(int[][]arrIn){
+        int[][]arrOut = new int[arrIn.length][arrIn[0].length];
         try{
             //read each value from the input array
             //and write it to the output array with the row indicies flipped
@@ -77,8 +76,8 @@ public class ReverseArrayClassHW {
     }
     
     //flip the array horizontally - flip the column indicies
-    public static int[][] flipArrayHorizontally(int[][]arrIn, 
-            int[][]arrOut){
+    public static int[][] flipArrayHorizontally(int[][]arrIn){
+        int[][]arrOut = new int[arrIn.length][arrIn[0].length];
         try{
             //read from the input array and write to the output array
             //with the column indicies flipped
