@@ -41,6 +41,7 @@ public class SortTab extends Tab {
     private final Button animate;
     private final Random rand = new Random();
     LinkedList<Text> txt = new LinkedList<>();
+    sortText text = new sortText();
 //    int[] nums = new int[];
 
     public SortTab(String string) {
@@ -71,7 +72,8 @@ public class SortTab extends Tab {
 //        sortShape ss = new sortShape(20,20,100,100);
         for (int i = 0; i<10; i++){
             txt.add(new Text(20.*i,150.,i+""));
-            shapeBox.getChildren().add(txt.get(i));
+            text.add(new Text(20.*i,150,i+""));
+            shapeBox.getChildren().add(text.get(i));
         }
         
         
@@ -124,7 +126,7 @@ public class SortTab extends Tab {
    }
     
     
-    public void animateSwitchElements(int i, int j){
+    public void animateSwitchElements(LinkedList<Text> t, int i, int j){
         LinkedList<Text> txt2 = (LinkedList<Text>) txt.clone();
         
 //        swapTxtElements(i, j);
@@ -133,11 +135,11 @@ public class SortTab extends Tab {
         
         
 //        int toX = (int) (txt.get(i).getX()+txt.get(j).getX())/2;
-        double X = txt.get(i).getX()+4;
-        double Y = txt.get(i).getY()-4.5;
+        double X = t.get(i).getX()+4;
+        double Y = t.get(i).getY()-4.5;
         
-        double X2 = txt.get(j).getX()+4;
-        double Y2 = txt.get(j).getY()-4.5;
+        double X2 = t.get(j).getX()+4;
+        double Y2 = t.get(j).getY()-4.5;
         
         double toX = (X + X2)/2;
 //        toX = 100;
@@ -150,8 +152,8 @@ public class SortTab extends Tab {
 //        PathTransition pathT = new PathTransition(Duration.millis(6000), path, animCircle);
         
         
-        PathTransition pathT = new PathTransition(Duration.millis(2000), path, txt.get(i));
-        PathTransition pathT2 = new PathTransition(Duration.millis(2000), path2, txt.get(j));
+        PathTransition pathT = new PathTransition(Duration.millis(2000), path, t.get(i));
+        PathTransition pathT2 = new PathTransition(Duration.millis(2000), path2, t.get(j));
 
         pathT.setCycleCount(1);
         pathT.play();
@@ -168,23 +170,24 @@ public class SortTab extends Tab {
         
 //        theShape.setFill(newColor);
         if (evt.getTarget().equals(randomize)){
-            for (int i = 0; i<txt.size(); i++){
-            txt.get(i).setText(rand.nextInt(txt.size()) + "");
+            for (int i = 0; i<text.size(); i++){
+            text.get(i).setText(rand.nextInt(text.size()) + "");
             }
         }
         else if (evt.getTarget().equals(animate)){
-            animateSwitchElements(0,1);
+            animateSwitchElements(text,0,1);
 //              swapTxtElements(0,1);
         }
         else {
-            int[] nums = new int[txt.size()];
-            for (int i = 0; i<txt.size(); i++){
-                nums[i]=Integer.parseInt(txt.get(i).getText());
+            int[] nums = new int[text.size()];
+            for (int i = 0; i<text.size(); i++){
+                nums[i]=Integer.parseInt(text.get(i).getText());
             }
-            quickSort(nums,0,txt.size());
+//            quickSort(nums,0,text.size());
+            text.quickSortTxt(0, text.size());
             
-            for (int i = 0; i<txt.size(); i++){
-            txt.get(i).setText(nums[i] + "");
+            for (int i = 0; i<text.size(); i++){
+            text.get(i).setText(nums[i] + "");
 //            txt.get(i).
 //            txt.get(i).applyCss();
             }

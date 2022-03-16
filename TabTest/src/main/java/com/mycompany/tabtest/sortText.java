@@ -1,7 +1,7 @@
 package com.mycompany.tabtest;
 
-import static com.mycompany.tabtest.SortSearchAlgs.insertionSort;
-import static com.mycompany.tabtest.SortSearchAlgs.swapElements;
+//import static com.mycompany.tabtest.SortSearchAlgs.insertionSort;
+//import static com.mycompany.tabtest.SortSearchAlgs.swapElements;
 import java.util.LinkedList;
 import javafx.scene.text.Text;
 
