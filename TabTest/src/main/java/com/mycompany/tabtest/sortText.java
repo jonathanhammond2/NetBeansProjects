@@ -94,10 +94,19 @@ public class sortText extends LinkedList<Text>{
         return Integer.parseInt(super.get(i).getText());
     }
     
+    public void setIntVal(int i, int j){
+//        super.set(i, new Text(j + ""));
+        super.get(i).setText(j + "");
+    }
+    
     public void swapTxtElements(int i, int j){
        Text temp = super.get(i);
        super.set(i, super.get(j));
        super.set(j, temp);
+       
+//       Text temp = t.get(i);
+//       t.set(i, t.get(j));
+//       t.set(j, temp);
 //        int[] nums = new int[txt.size()];
 //        for (int k = 0; k<txt.size(); k++){
 //            nums[k]=Integer.parseInt(txt.get(k).getText());

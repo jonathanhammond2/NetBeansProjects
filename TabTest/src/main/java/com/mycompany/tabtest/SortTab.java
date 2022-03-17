@@ -12,7 +12,10 @@ import javafx.scene.layout.BorderPane;
 //import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import static com.mycompany.tabtest.SortSearchAlgs.*;
+import javafx.animation.Animation.Status;
 import javafx.animation.PathTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.shape.CubicCurveTo;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -27,7 +30,7 @@ import javafx.util.Duration;
 
 /**
  *
- * @author rwhitnel
+ * @author jonn
  */
 public class SortTab extends Tab {
     // ShapeTab will display by default a Shape object that is provided to it
@@ -38,7 +41,7 @@ public class SortTab extends Tab {
     private final Button addElement;
     private final Button removeElement;
     private final Button quickSort;
-    private final Button animate;
+    private final Button swap;
     private final Random rand = new Random();
     LinkedList<Text> txt = new LinkedList<>();
     sortText text = new sortText();
@@ -52,7 +55,7 @@ public class SortTab extends Tab {
         addElement = new Button("Add Element");
         removeElement = new Button("Remove Element");
         quickSort = new Button("quickSort");
-        animate = new Button("swap elements");
+        swap = new Button("swap elements");
 
         // Let's build the display of the tab
         // Use HBox object for the shape
@@ -66,7 +69,7 @@ public class SortTab extends Tab {
 //        shapeBox.setCenter(this.theShape);
         shapeBox.setTop(randomize);
         shapeBox.setCenter(quickSort);
-        shapeBox.setBottom(animate);
+        shapeBox.setBottom(swap);
 //        shapeBox.getChildren().addAll(randomize, addElement, removeElement, quickSort);
         
 //        sortShape ss = new sortShape(20,20,100,100);
@@ -74,7 +77,10 @@ public class SortTab extends Tab {
             txt.add(new Text(20.*i,150.,i+""));
             text.add(new Text(20.*i,150,i+""));
             shapeBox.getChildren().add(text.get(i));
+//            shapeBox.getChildren().add();
         }
+        
+        
         
         
         
@@ -87,7 +93,10 @@ public class SortTab extends Tab {
 //        shapeBox.getChildren().add(ss);
 //        shapeBox.getChildren().add(txt);
         setContent(shapeBox);
-        
+//        text.get(0).setText("5");
+//        swapTxtElements(text, 0,1);
+
+
 //        sortShapes.add(i, ss);
 //        setContent(ss);
 //        for (int i = 0; i<10; i++){
@@ -101,9 +110,9 @@ public class SortTab extends Tab {
         // Step 5
         randomize.setOnAction(this::processButtonPress);
         quickSort.setOnAction(this::processButtonPress);
-        animate.setOnAction(this::processButtonPress);
+        swap.setOnAction(this::processButtonPress);
 
-//        animateSwitchElements(0,1);
+//        swap.SwitchElements(0,1);
         // The :: means the processButtonPress method in this object
         
 //        for (int i = 0; i<10; i++){
@@ -111,23 +120,31 @@ public class SortTab extends Tab {
 //        }
         
    }
-   public void swapTxtElements(int i, int j){
-       Text temp = txt.get(i);
-       txt.set(i, txt.get(j));
-       txt.set(j, temp);
-//        int[] nums = new int[txt.size()];
-//        for (int k = 0; k<txt.size(); k++){
-//            nums[k]=Integer.parseInt(txt.get(k).getText());
-//        }
-//        quickSort(nums,0,txt.size());
-//            
-//            for (int l = 0; l<txt.size(); l++){
-//            txt.get(l).setText(nums[l] + "");}
+   public void swapTxtElements(sortText t, int i, int j){
+//       Text temp = t.get(i);
+//       t.set(i, t.get(j));
+//       t.set(j, temp);
+        t.swapTxtElements(i, j);
+//       int tempI = t.getIntVal(i);
+//       t.setIntVal(i,t.getIntVal(j));
+//       t.setIntVal(j, tempI);
+       
+//       double X = t.get(i).getX();
+//       double Y = t.get(i).getY();
+//       
+//       double X2 = t.get(j).getX();
+//       double Y2 = t.get(j).getY();
+//       
+//       t.get(i).setX(X2);
+//       t.get(i).setY(Y2);
+//       
+//       t.get(j).setX(X);
+//       t.get(j).setY(Y);
    }
     
     
     public void animateSwitchElements(LinkedList<Text> t, int i, int j){
-        LinkedList<Text> txt2 = (LinkedList<Text>) txt.clone();
+//        LinkedList<Text> txt2 = (LinkedList<Text>) txt.clone();
         
 //        swapTxtElements(i, j);
         Path path = new Path();
@@ -135,11 +152,17 @@ public class SortTab extends Tab {
         
         
 //        int toX = (int) (txt.get(i).getX()+txt.get(j).getX())/2;
-        double X = t.get(i).getX()+4;
-        double Y = t.get(i).getY()-4.5;
+//        double X = t.get(i).getX()+4;
+//        double Y = t.get(i).getY()-4.5;
+//        
+//        double X2 = t.get(j).getX()+4;
+//        double Y2 = t.get(j).getY()-4.5;
         
-        double X2 = t.get(j).getX()+4;
-        double Y2 = t.get(j).getY()-4.5;
+        double X = t.get(i).getX();
+        double Y = t.get(i).getY();
+        
+        double X2 = t.get(j).getX();
+        double Y2 = t.get(j).getY();
         
         double toX = (X + X2)/2;
 //        toX = 100;
@@ -154,13 +177,39 @@ public class SortTab extends Tab {
         
         PathTransition pathT = new PathTransition(Duration.millis(2000), path, t.get(i));
         PathTransition pathT2 = new PathTransition(Duration.millis(2000), path2, t.get(j));
+        
+        pathT.statusProperty().addListener(new ChangeListener<Status>() {
+
+        @Override
+        public void changed(ObservableValue<? extends Status> observableValue,
+                            Status oldValue, Status newValue) {
+            if(newValue==Status.STOPPED){
+                swapTxtElements(text,i,j);
+                try{
+                animateSwitchElements(text,i+1,j-1);}
+                catch(IndexOutOfBoundsException e){
+                    System.out.println("done");
+                }
+                
+            }            
+        }});
+        
 
         pathT.setCycleCount(1);
         pathT.play();
         
         pathT2.setCycleCount(1);
         pathT2.play();
+//        swapTxtElements(text,i,j);
+        
+        text.get(i).setX(X2);
+        text.get(i).setY(Y2);
+        
+        text.get(j).setX(X);
+        text.get(j).setY(Y);
+//        swapTxtElemen
     }
+    
     
 //    public void swapTxtElements
     // Step 4
@@ -174,26 +223,26 @@ public class SortTab extends Tab {
             text.get(i).setText(rand.nextInt(text.size()) + "");
             }
         }
-        else if (evt.getTarget().equals(animate)){
-            animateSwitchElements(text,0,1);
-//              swapTxtElements(0,1);
-        }
-        else {
+        else if (evt.getTarget().equals(quickSort)){
             int[] nums = new int[text.size()];
             for (int i = 0; i<text.size(); i++){
                 nums[i]=Integer.parseInt(text.get(i).getText());
             }
-//            quickSort(nums,0,text.size());
-            text.quickSortTxt(0, text.size());
+            quickSort(nums,0,text.size());
+//            text.quickSortTxt(0, text.size());
+//            text.insertionSortTxt(0, text.size());
             
             for (int i = 0; i<text.size(); i++){
             text.get(i).setText(nums[i] + "");
-//            txt.get(i).
-//            txt.get(i).applyCss();
+            }
+        }
+        
+        else {
+//            swapTxtElements(text,0,1);
+              animateSwitchElements(text,0,text.size()-1);
             }
             
         }
         
     }
     
-}
