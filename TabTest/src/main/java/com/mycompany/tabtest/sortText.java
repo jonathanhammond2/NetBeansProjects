@@ -3,7 +3,15 @@ package com.mycompany.tabtest;
 //import static com.mycompany.tabtest.SortSearchAlgs.insertionSort;
 //import static com.mycompany.tabtest.SortSearchAlgs.swapElements;
 import java.util.LinkedList;
+import javafx.animation.Animation;
+import javafx.animation.PathTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 /**
  *
@@ -116,4 +124,51 @@ public class sortText extends LinkedList<Text>{
 //            for (int l = 0; l<txt.size(); l++){
 //            txt.get(l).setText(nums[l] + "");}
    }
+    
+    public void animateSwitchElements(int i, int j){
+        Path path = new Path();
+        Path path2 = new Path();
+        
+        double X = super.get(i).getX();
+        double Y = super.get(i).getY();
+        
+        double X2 = super.get(j).getX();
+        double Y2 = super.get(j).getY();
+        
+        double toX = (X + X2)/2;
+        
+        path.getElements().addAll(new MoveTo(X,Y),new LineTo(toX,125), new LineTo(X2,Y2));
+        path2.getElements().addAll(new MoveTo(X2,Y2),new LineTo(toX, 125), new LineTo(X,Y));
+        //build a PathTransition that has a duration, a path, and a target
+        
+        PathTransition pathT = new PathTransition(Duration.millis(2000), path, super.get(i));
+        PathTransition pathT2 = new PathTransition(Duration.millis(2000), path2, super.get(j));
+        
+        pathT.statusProperty().addListener(new ChangeListener<Animation.Status>() {
+
+        @Override
+        public void changed(ObservableValue<? extends Animation.Status> observableValue,
+                            Animation.Status oldValue, Animation.Status newValue) {
+            if(newValue==Animation.Status.STOPPED){
+                swapTxtElements(i,j);
+                try{
+                animateSwitchElements(i+1,j-1);}
+                catch(IndexOutOfBoundsException e){
+                    System.out.println("done");
+                }
+                
+            }            
+        }});
+        pathT.setCycleCount(1);
+        pathT.play();
+        
+        pathT2.setCycleCount(1);
+        pathT2.play();
+        
+//        t.get(i).setX(X2);
+//        t.get(i).setY(Y2);
+//        
+//        t.get(j).setX(X);
+//        t.get(j).setY(Y);
+    }
 }

@@ -144,19 +144,8 @@ public class SortTab extends Tab {
     
     
     public void animateSwitchElements(LinkedList<Text> t, int i, int j){
-//        LinkedList<Text> txt2 = (LinkedList<Text>) txt.clone();
-        
-//        swapTxtElements(i, j);
         Path path = new Path();
         Path path2 = new Path();
-        
-        
-//        int toX = (int) (txt.get(i).getX()+txt.get(j).getX())/2;
-//        double X = t.get(i).getX()+4;
-//        double Y = t.get(i).getY()-4.5;
-//        
-//        double X2 = t.get(j).getX()+4;
-//        double Y2 = t.get(j).getY()-4.5;
         
         double X = t.get(i).getX();
         double Y = t.get(i).getY();
@@ -165,15 +154,10 @@ public class SortTab extends Tab {
         double Y2 = t.get(j).getY();
         
         double toX = (X + X2)/2;
-//        toX = 100;
         
-//        path.getElements().add(new MoveTo(200,300));
-//        path.getElements().add(new LineTo(300,200));
         path.getElements().addAll(new MoveTo(X,Y),new LineTo(toX,125), new LineTo(X2,Y2));
-        path2.getElements().addAll(new MoveTo(X2,Y2),new LineTo(toX, 125), new LineTo(X,Y));//        path.getElements().add(new CubicCurveTo(100,100,200,200,50,50));
+        path2.getElements().addAll(new MoveTo(X2,Y2),new LineTo(toX, 125), new LineTo(X,Y));
         //build a PathTransition that has a duration, a path, and a target
-//        PathTransition pathT = new PathTransition(Duration.millis(6000), path, animCircle);
-        
         
         PathTransition pathT = new PathTransition(Duration.millis(2000), path, t.get(i));
         PathTransition pathT2 = new PathTransition(Duration.millis(2000), path2, t.get(j));
@@ -193,31 +177,21 @@ public class SortTab extends Tab {
                 
             }            
         }});
-        
-
         pathT.setCycleCount(1);
         pathT.play();
         
         pathT2.setCycleCount(1);
         pathT2.play();
-//        swapTxtElements(text,i,j);
         
         text.get(i).setX(X2);
         text.get(i).setY(Y2);
         
         text.get(j).setX(X);
         text.get(j).setY(Y);
-//        swapTxtElemen
     }
     
     
-//    public void swapTxtElements
-    // Step 4
     public void processButtonPress(ActionEvent evt) {
-//        Color newColor = Color.rgb(rand.nextInt(256), rand.nextInt(256),
-//                rand.nextInt(256));
-        
-//        theShape.setFill(newColor);
         if (evt.getTarget().equals(randomize)){
             for (int i = 0; i<text.size(); i++){
             text.get(i).setText(rand.nextInt(text.size()) + "");
@@ -239,7 +213,8 @@ public class SortTab extends Tab {
         
         else {
 //            swapTxtElements(text,0,1);
-              animateSwitchElements(text,0,text.size()-1);
+//              animateSwitchElements(text,0,text.size()-1);
+                text.animateSwitchElements(0, 9);
             }
             
         }
